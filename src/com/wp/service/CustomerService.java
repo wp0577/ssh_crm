@@ -17,7 +17,7 @@ public class CustomerService {
     //查询总数据和Customer对象，并封装成pageBean
     public PageBean getPageBean(DetachedCriteria dc, Integer currentPage, Integer pageSize) {
         //通过离线查询对象查询
-        Integer totalCount = customerDao.getCustomerCount(dc);
+        Integer totalCount = customerDao.getCount(dc);
         PageBean pageBean = new PageBean(currentPage, totalCount, pageSize);
         List<Customer> customers = customerDao.getList(dc, pageBean);
         pageBean.setList(customers);

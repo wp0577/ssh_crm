@@ -33,7 +33,7 @@
 
 </HEAD>
 <BODY>
-<FORM id=form1 name=form1 action="${pageContext.request.contextPath}/UserAction_login" method=post>
+<FORM id=form1 name=form1 action="${pageContext.request.contextPath}/userAction_login" method=post>
 
     <DIV id=UpdatePanel1>
         <DIV id=div1
@@ -66,7 +66,7 @@
                                             <TD style="HEIGHT: 28px" width=80>登 录 名：</TD>
                                             <TD style="HEIGHT: 28px" width=150><INPUT id=txtName
                                                                                       style="WIDTH: 130px"
-                                                                                      name="user_code"></TD>
+                                                                                      name="user_name"></TD>
                                             <TD style="HEIGHT: 28px" width=370><SPAN
                                                     id=RequiredFieldValidator3
                                                     style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入登录名</SPAN>

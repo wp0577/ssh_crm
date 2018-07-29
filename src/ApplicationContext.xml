@@ -68,16 +68,18 @@
 
 
     <!--整合struts-->
-    <bean name="userAction" class="com.wp.web.action.CustomerAction" scope="prototype">
-        <property name="customerService" ref="userService"></property>
+    <bean name="userAction" class="com.wp.web.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
     </bean>
 
-    <bean name="userService" class="com.wp.service.CustomerService"></bean>
-    <bean name="userDao" class="com.wp.dao.CustomerDao">
+    <bean name="userService" class="com.wp.service.UserService">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+    <bean name="userDao" class="com.wp.dao.UserDao">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
-    <bean name="customerAction" class="com.wp.web.action.CustomerAction">
+    <bean name="customerAction" class="com.wp.web.action.CustomerAction" scope="prototype">
         <property name="customerService" ref="customerService"></property>
     </bean>
     <bean class="com.wp.service.CustomerService" name="customerService">

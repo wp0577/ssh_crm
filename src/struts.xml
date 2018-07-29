@@ -7,10 +7,15 @@
 <struts>
 
     <constant name="struts.objectFactory" value="spring"></constant>
+    <!--热部署-->
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+
 
     <package name="crm" namespace="/" extends="struts-default">
         <action name="userAction_*" class="userAction" method="{1}">
-            <result name="success">/jsp/customer/list.jsp</result>
+            <result name="success">/index.htm</result>
+            <result name="error" type="redirect">/login.jsp</result>
         </action>
         <action name="customerAction_*" class="customerAction" method="{1}">
             <result name="success">/jsp/customer/list.jsp</result>

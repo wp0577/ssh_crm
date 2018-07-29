@@ -11,7 +11,7 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import java.util.List;
 
-public class CustomerDao extends HibernateDaoSupport {
+public class CustomerDao extends BaseDao<Customer> {
 
 
     public Customer checkCustomer(String username) {
@@ -26,20 +26,13 @@ public class CustomerDao extends HibernateDaoSupport {
         });
     }
 
-    public Integer getCustomerCount(DetachedCriteria dc) {
-        return getHibernateTemplate().execute(new HibernateCallback<Integer>() {
-            @Override
-            public Integer doInHibernate(Session session) throws HibernateException {
-                String hql = "select count(*) from Customer";
-
-                return (int) (long) session.createQuery(hql).uniqueResult();
-            }
-        });
+    @Override
+    public Integer getCount(DetachedCriteria dc) {
+        return super.getCount(dc);
     }
 
+    @Override
     public List<Customer> getList(DetachedCriteria dc, PageBean pageBean) {
-
-        return (List<Customer>) getHibernateTemplate().findByCriteria(dc, pageBean.getStart(), pageBean.getPageSize());
-
+        return super.getList(dc, pageBean);
     }
 }
