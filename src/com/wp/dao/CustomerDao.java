@@ -1,9 +1,11 @@
 package com.wp.dao;
 
 import com.wp.domain.Customer;
+import com.wp.util.PageBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
@@ -24,7 +26,7 @@ public class CustomerDao extends HibernateDaoSupport {
         });
     }
 
-    public Integer getCustomerCount() {
+    public Integer getCustomerCount(DetachedCriteria dc) {
         return getHibernateTemplate().execute(new HibernateCallback<Integer>() {
             @Override
             public Integer doInHibernate(Session session) throws HibernateException {
@@ -35,18 +37,9 @@ public class CustomerDao extends HibernateDaoSupport {
         });
     }
 
-    public List<Customer> getList(Integer currentPage, Integer pageSize) {
-        return getHibernateTemplate().execute(new HibernateCallback<List<Customer>>() {
-            @Override
-            public List doInHibernate(Session session) throws HibernateException {
-                String hql = "from Customer";
-                Query query = session.createQuery(hql);
-                query.setFirstResult((currentPage - 1) * pageSize + 1);
-                query.setMaxResults(pageSize);
-                query.setParameter(0, currentPage);
-                return query.list();
-            }
-        });
+    public List<Customer> getList(DetachedCriteria dc, PageBean pageBean) {
+
+        return (List<Customer>) getHibernateTemplate().findByCriteria(dc, pageBean.getStart(), pageBean.getPageSize());
 
     }
 }
