@@ -31,7 +31,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" value="61abcdd0-234e-44db-a062-928e0cc2a457" />
-          <unit-entry name="noname-ApplicationContext.xml@1286" />
+          <unit-entry name="noname-ApplicationContext.xml@1286" value="61abcdd0-234e-44db-a062-928e0cc2a457" />
           <unit-entry name="noname-ApplicationContext.xml@862" />
         </datasource-map>
         <naming-strategy-map />
