@@ -22,6 +22,9 @@
             <result name="toList" type="redirectAction">customerAction_list</result>
             <result name="toAdd">/jsp/customer/add.jsp</result>
         </action>
+        <action name="linkManAction_*" class="com.wp.web.action.LinkManAction" method="{1}">
+            <result name="toList"></result>
+        </action>
         <action name="baseDictAction" class="com.wp.web.action.BaseDictAction" method="execute"></action>
     </package>
 

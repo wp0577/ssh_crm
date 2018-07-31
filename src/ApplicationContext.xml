@@ -71,10 +71,10 @@
 
 
     <!--整合struts-->
+    <!--userAction-->
     <bean name="userAction" class="com.wp.web.action.UserAction" scope="prototype">
         <property name="userService" ref="userService"></property>
     </bean>
-
     <bean name="userService" class="com.wp.service.UserService">
         <property name="userDao" ref="userDao"></property>
     </bean>
@@ -82,6 +82,7 @@
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
+    <!--CustomerAction-->
     <bean name="customerAction" class="com.wp.web.action.CustomerAction" scope="prototype">
         <property name="customerService" ref="customerService"></property>
     </bean>
@@ -92,6 +93,7 @@
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
+    <!--BaseDictAction-->
     <bean name="baseDictAction" class="com.wp.web.action.BaseDictAction" scope="prototype">
         <property name="baseDictService" ref="baseDictService"></property>
     </bean>
@@ -101,4 +103,16 @@
     <bean class="com.wp.dao.BaseDictDao" name="baseDictDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <!--BaseDictAction-->
+    <bean name="linkManAction" class="com.wp.web.action.LinkManAction" scope="prototype">
+        <property name="linkManService" ref="linkManService"></property>
+    </bean>
+    <bean class="com.wp.service.LinkManService" name="linkManService">
+        <property name="linkManDao" ref="linkManDao"></property>
+    </bean>
+    <bean class="com.wp.dao.LinkManDao" name="linkManDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
 </beans>

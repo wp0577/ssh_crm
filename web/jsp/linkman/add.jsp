@@ -16,10 +16,10 @@
 </HEAD>
 <BODY>
 <FORM id=form1 name=form1
-      action="${pageContext.request.contextPath }/AddLinkManServlet"
+      action="${pageContext.request.contextPath }/linkManAction_add"
       method=post>
 
-    <input type="hidden" name="cust_id" id="cust_id">
+    <input type="hidden" name="customer.cust_id" id="cust_id">
     <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
         <TBODY>
         <TR>
