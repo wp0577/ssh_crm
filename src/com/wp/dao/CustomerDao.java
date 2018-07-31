@@ -9,6 +9,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class CustomerDao extends BaseDao<Customer> {
@@ -27,6 +28,16 @@ public class CustomerDao extends BaseDao<Customer> {
     }
 
     @Override
+    public void save(Customer customer) {
+        super.save(customer);
+    }
+
+    @Override
+    public void saveOrUpdate(Customer customer) {
+        super.saveOrUpdate(customer);
+    }
+
+    @Override
     public Integer getCount(DetachedCriteria dc) {
         return super.getCount(dc);
     }
@@ -34,5 +45,10 @@ public class CustomerDao extends BaseDao<Customer> {
     @Override
     public List<Customer> getList(DetachedCriteria dc, PageBean pageBean) {
         return super.getList(dc, pageBean);
+    }
+
+    @Override
+    public Customer getById(Serializable id) {
+        return super.getById(id);
     }
 }

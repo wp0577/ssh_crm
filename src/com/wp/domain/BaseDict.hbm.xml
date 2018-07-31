@@ -10,7 +10,8 @@
             name: 完整类名
             table:数据库表名
      -->
-    <class name="BaseDict" table="base_dict">
+    <!--org.hibernate.LazyInitializationException - could not initialize proxy - no Session-->
+    <class name="BaseDict" table="base_dict" lazy="false">
         <!-- id元素:配置主键映射的属性
                 name: 填写主键对应属性名
                 column(可选): 填写表中的主键列名.默认值:列名会默认使用属性名

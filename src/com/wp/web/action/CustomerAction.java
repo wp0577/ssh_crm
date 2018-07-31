@@ -7,8 +7,11 @@ import com.wp.domain.Customer;
 import org.apache.commons.lang3.StringUtils;
 import com.wp.service.CustomerService;
 import com.wp.util.PageBean;
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+
+import java.io.File;
 
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
 
@@ -19,6 +22,8 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     private Integer currentPage;
     private Integer pageSize;
 
+    private File photo;
+
     public String list() throws Exception {
 
         //通过Detach离线对象去查询，可以实现多态
@@ -28,13 +33,42 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         }
         PageBean pageBean = customerService.getPageBean(dc, currentPage, pageSize);
         ActionContext.getContext().put("pageBean", pageBean);
+        /*for (int i = 0; i < pageBean.getList().size(); i++) {
+            Customer customer = (Customer) pageBean.getList().get(i);
+            System.out.println(customer.getCust_level());
+            //if(customer.getCust_level()!=null) System.out.println(customer.getCust_level().getDict_item_name());
+        }*/
         return SUCCESS;
 
+    }
+
+    public String save() {
+        //文件上传
+        photo.renameTo(new File("/Users/wupan/Desktop/test.jpg"));
+        customerService.save(customer);
+        return "toList";
+    }
+
+    public String edit() {
+        //如果要使用customer.getCust_Id()的方法的话，需要将list.jsp中传来的custID属性名改为cust_Id.
+        customer = customerService.getById(customer.getCust_id());
+        // Customer  customer = customerService.getById(Long.valueOf(ServletActionContext.getRequest().getParameter("custId")));
+        ActionContext.getContext().put("customer", customer);
+        System.out.println(customer);
+        return "toAdd";
     }
 
     @Override
     public Customer getModel() {
         return customer;
+    }
+
+    public File getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(File photo) {
+        this.photo = photo;
     }
 
     public Integer getCurrentPage() {

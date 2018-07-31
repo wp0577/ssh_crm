@@ -29,6 +29,7 @@
             </props>
         </property>
         <property name="mappingDirectoryLocations" value="classpath:com/wp/domain"/>
+
     </bean>
 
     <!--配置C3p0连接池-->
@@ -40,6 +41,7 @@
         <property name="driverClass" value="${jdbc.driverClass}"></property>
         <property name="user" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
+
     </bean>
 
     <!--添加事务-->
@@ -58,6 +60,7 @@
             <tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
             <tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
             <tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
         </tx:attributes>
     </tx:advice>
     <!--织入事务-->
@@ -87,5 +90,15 @@
     </bean>
     <bean class="com.wp.dao.CustomerDao" name="customerDao">
         <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean name="baseDictAction" class="com.wp.web.action.BaseDictAction" scope="prototype">
+        <property name="baseDictService" ref="baseDictService"></property>
+    </bean>
+    <bean class="com.wp.service.BaseDictService" name="baseDictService">
+        <property name="baseDictDao" ref="baseDictDao"></property>
+    </bean>
+    <bean class="com.wp.dao.BaseDictDao" name="baseDictDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 </beans>

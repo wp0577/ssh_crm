@@ -92,7 +92,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + "]";
+        return "Customer [cust_level =" + cust_level + "cust_id=" + cust_id + ", cust_name=" + cust_name + "]";
     }
 
 

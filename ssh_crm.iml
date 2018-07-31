@@ -30,8 +30,8 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="61abcdd0-234e-44db-a062-928e0cc2a457" />
-          <unit-entry name="noname-ApplicationContext.xml@1286" value="61abcdd0-234e-44db-a062-928e0cc2a457" />
+          <unit-entry name="hibernate.cfg.xml" value="7116c931-75f3-46ad-9bcf-5de9fed55bc5" />
+          <unit-entry name="noname-ApplicationContext.xml@1286" value="7116c931-75f3-46ad-9bcf-5de9fed55bc5" />
           <unit-entry name="noname-ApplicationContext.xml@862" />
         </datasource-map>
         <naming-strategy-map />

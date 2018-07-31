@@ -19,7 +19,10 @@
         </action>
         <action name="customerAction_*" class="customerAction" method="{1}">
             <result name="success">/jsp/customer/list.jsp</result>
+            <result name="toList" type="redirectAction">customerAction_list</result>
+            <result name="toAdd">/jsp/customer/add.jsp</result>
         </action>
+        <action name="baseDictAction" class="com.wp.web.action.BaseDictAction" method="execute"></action>
     </package>
 
 </struts>

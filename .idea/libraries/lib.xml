@@ -5,8 +5,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ideaLibSources/spring-orm-4.2.4.RELEASE-sources.jar!/" />
-      <root url="jar://$USER_HOME$/.ideaLibSources/hibernate-core-5.0.7.Final-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/xwork-core-2.3.24-sources.jar!/" />
     </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib" recursive="false" />
   </library>

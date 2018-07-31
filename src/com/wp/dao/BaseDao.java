@@ -21,6 +21,11 @@ public class BaseDao<T> extends HibernateDaoSupport {
 
     }
 
+    //saveOrUpdate()方法：如果id相同则直接update而不是save一个新的数据
+    public void saveOrUpdate(T t) {
+        getHibernateTemplate().saveOrUpdate(t);
+    }
+
     public void save(T t) {
         getHibernateTemplate().save(t);
     }
