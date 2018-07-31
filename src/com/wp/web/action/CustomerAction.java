@@ -44,7 +44,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
     public String save() {
         //文件上传
-        photo.renameTo(new File("/Users/wupan/Desktop/test.jpg"));
+        if (photo != null) photo.renameTo(new File("/Users/wupan/Desktop/test.jpg"));
         customerService.save(customer);
         return "toList";
     }

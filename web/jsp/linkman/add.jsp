@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,8 +19,9 @@
 <FORM id=form1 name=form1
       action="${pageContext.request.contextPath }/linkManAction_add"
       method=post>
-
-    <input type="hidden" name="customer.cust_id" id="cust_id">
+    <%--因为没加#所以报错--%>
+    <input type="hidden" name="customer.cust_id" id="cust_id" value="<s:property value="#linkMan.customer.cust_id" />">
+    <input type="hidden" name="lkm_id" value="<s:property value="#linkMan.lkm_id" />"/>
     <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
         <TBODY>
         <TR>
@@ -50,7 +52,7 @@
                     <tr>
                         <td>所属客户：</td>
                         <td colspan="3"><input type="text" id="cust_name" name="cust_name" style="WIDTH: 180px"
-                                               value=""/>
+                                               value="<s:property value='#linkMan.customer.cust_name'/>"/>
                             <%--引入select参数可以使list.jsp进行判断--%>
                             <input type="button" value="select"
                                    onclick="window.open('${pageContext.request.contextPath}/customerAction_list?selectWindow=select','','width=700,height=400，top=500,left=1000')"/>
@@ -60,24 +62,30 @@
                         <td>联系人名称：</td>
                         <td>
                             <INPUT class=textbox id=sChannel2
-                                   style="WIDTH: 180px" maxLength=50 name="lkm_name">
+                                   style="WIDTH: 180px" maxLength=50 name="lkm_name"
+                                   value="<s:property value='#linkMan.lkm_name'/>">
                         </td>
                         <td>联系人性别：</td>
                         <td>
-                            <input type="radio" value="1" name="lkm_gender">男
-                            <input type="radio" value="2" name="lkm_gender">女
+
+                            <input type="radio" value="1" name="lkm_gender"
+                                   <s:if test="#linkMan.lkm_gender=='1'">checked</s:if> >男
+                            <input type="radio" value="2" name="lkm_gender"
+                                   <s:if test="#linkMan.lkm_gender=='2'">checked</s:if>>女
                         </td>
                     </TR>
                     <TR>
                         <td>联系人办公电话 ：</td>
                         <td>
                             <INPUT class=textbox id=sChannel2
-                                   style="WIDTH: 180px" maxLength=50 name="lkm_phone">
+                                   style="WIDTH: 180px" maxLength=50 name="lkm_phone"
+                                   value="<s:property value='#linkMan.lkm_phone' />"/>
                         </td>
                         <td>联系人手机 ：</td>
                         <td>
                             <INPUT class=textbox id=sChannel2
-                                   style="WIDTH: 180px" maxLength=50 name="lkm_mobile">
+                                   style="WIDTH: 180px" maxLength=50 name="lkm_mobile"
+                                   value="<s:property value='#linkMan.lkm_mobile' />">
                         </td>
                     </TR>
                     <tr>
