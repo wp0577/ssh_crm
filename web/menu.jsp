@@ -165,7 +165,7 @@
                                 </TR>
                                 <TR>
                                     <TD class=menuSmall><A class=style2 href="linkmanServlet?method=list"
-                                                           target=main>－联系人列表</A></TD>
+                                                           target=main>－ 联系人列表</A></TD>
                                 </TR>
 
                                 </TBODY>

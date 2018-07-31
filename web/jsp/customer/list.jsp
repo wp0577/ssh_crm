@@ -26,6 +26,15 @@
             $("#pageForm").submit();
         };
 
+        function itemSelect(cust_id, cust_name) {
+            //此处不能用var window = window.opener; 因为会覆盖。
+            var win = window.opener;
+            var doc = win.document;
+            doc.getElementById("cust_id").value = cust_id;
+            doc.getElementById("cust_name").value = cust_name;
+            window.close();
+
+        };
 
     </SCRIPT>
 
@@ -74,6 +83,12 @@
                             <!-- 隐藏域.每页显示条数 -->
                             <input type="hidden" name="pageSize" id="pageSizeInput"
                                    value="<s:property value="#pageBean.pageSize" />"/>
+
+                            <!--保存selectWindow信息，防止下一页select选项消失-->
+                            <s:if test="#parameters.selectWindow!=null">
+                                <input type="hidden" name="selectWindow" id="selectWindow"
+                                       value="<s:property value="#parameters.selectWindow" />"/>
+                            </s:if>
                             <TABLE cellSpacing=0 cellPadding=2 border=0>
                                 <TBODY>
                                 <TR>
@@ -129,13 +144,19 @@
                                         <s:property value="#cust.cust_mobile"/>
                                     </TD>
                                     <TD>
-                                        <a href="${pageContext.request.contextPath }/customerAction_edit?cust_id=<s:property value="#cust.cust_id"/>">EDIT</a>
-                                        &nbsp;&nbsp;
-                                        <a href="${pageContext.request.contextPath }/customerServlet?method=delete&custId=${customer.cust_id}">DELETE</a>
+                                        <s:if test="#parameters.selectWindow==null">
+                                            <a href="${pageContext.request.contextPath }/customerAction_edit?cust_id=<s:property value="#cust.cust_id"/>">EDIT</a>
+                                            &nbsp;&nbsp;
+                                            <a href="${pageContext.request.contextPath }/customerServlet?method=delete&custId=${customer.cust_id}">DELETE</a>
+                                        </s:if>
+                                        <s:else>
+                                            <input type="button" value="select"
+                                                   onclick="itemSelect(<s:property value="#cust.cust_id"/>, '<s:property
+                                                           value="#cust.cust_name"/>')"/>
+                                        </s:else>
                                     </TD>
                                 </TR>
                             </s:iterator>
-
                             </TBODY>
                         </TABLE>
                     </TD>

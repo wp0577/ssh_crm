@@ -11,6 +11,7 @@
           rel=stylesheet>
 
 
+
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
@@ -18,7 +19,7 @@
       action="${pageContext.request.contextPath }/AddLinkManServlet"
       method=post>
 
-
+    <input type="hidden" name="cust_id" id="cust_id">
     <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
         <TBODY>
         <TR>
@@ -48,7 +49,12 @@
                 <TABLE cellSpacing=0 cellPadding=5 border=0>
                     <tr>
                         <td>所属客户：</td>
-                        <td colspan="3"><input type="text" name="cust_id" style="WIDTH: 180px"/></td>
+                        <td colspan="3"><input type="text" id="cust_name" name="cust_name" style="WIDTH: 180px"
+                                               value=""/>
+                            <%--引入select参数可以使list.jsp进行判断--%>
+                            <input type="button" value="select"
+                                   onclick="window.open('${pageContext.request.contextPath}/customerAction_list?selectWindow=select','','width=700,height=400，top=500,left=1000')"/>
+                        </td>
                     </tr>
                     <TR>
                         <td>联系人名称：</td>
