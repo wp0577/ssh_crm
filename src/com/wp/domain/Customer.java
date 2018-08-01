@@ -1,5 +1,7 @@
 package com.wp.domain;
 
+import java.util.Set;
+
 public class Customer {
 
     /*
@@ -26,6 +28,15 @@ public class Customer {
     private BaseDict cust_industry;
     private BaseDict cust_level;
 
+    private Set<SaleVisit> saleVisits;
+
+    public Set<SaleVisit> getSaleVisits() {
+        return saleVisits;
+    }
+
+    public void setSaleVisits(Set<SaleVisit> saleVisits) {
+        this.saleVisits = saleVisits;
+    }
 
     public BaseDict getCust_source() {
         return cust_source;

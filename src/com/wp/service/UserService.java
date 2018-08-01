@@ -18,6 +18,10 @@ public class UserService {
 
     }
 
+    public List<User> getUserByName(String name) {
+        return userDao.getUserByName(name);
+    }
+
     public void regist(User user) {
         System.out.println(user.getUser_code());
         //first check the userCode whether exist

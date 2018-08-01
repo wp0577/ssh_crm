@@ -115,4 +115,15 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <!--SaleVisitAction-->
+    <bean name="saleVisitAction" class="com.wp.web.action.SaleVisitAction" scope="prototype">
+        <property name="saleVisitService" ref="saleVisitService"></property>
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <bean class="com.wp.service.SaleVisitService" name="saleVisitService">
+        <property name="saleVisitDao" ref="saleVisitDao"></property>
+    </bean>
+    <bean class="com.wp.dao.SaleVisitDao" name="saleVisitDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 </beans>

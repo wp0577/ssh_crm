@@ -24,6 +24,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
         DetachedCriteria dc = DetachedCriteria.forClass(User.class);
         dc.add(Restrictions.eq("user_code", user.getUser_code()));
         dc.add(Restrictions.eq("user_password", user.getUser_password()));
+        System.out.println("usercode" + user.getUser_code());
         try {
             List<User> list = userService.getByName(dc);
             ActionContext.getContext().getSession().put("user1", list.get(0));
