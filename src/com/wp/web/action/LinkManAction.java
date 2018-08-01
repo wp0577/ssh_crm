@@ -17,7 +17,6 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
     private LinkManService linkManService;
 
     private Integer currentPage;
-
     private Integer pageSize;
 
     public String add() {
@@ -33,6 +32,11 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
         if (StringUtils.isNotBlank(linkMan.getLkm_name())) {
             dc.add(Restrictions.like("lkm_name", "%" + linkMan.getLkm_name() + "%"));
         }
+        //判断是否需要通过客户去筛选
+        if (linkMan.getCustomer() != null && linkMan.getCustomer().getCust_id() != null) {
+            dc.add(Restrictions.eq("customer.cust_id", linkMan.getCustomer().getCust_id()));
+        }
+
         PageBean pageBean = linkManService.getPageBean(dc, currentPage, pageSize);
         ActionContext.getContext().put("pageBean", pageBean);
         /*for (int i = 0; i < pageBean.getList().size(); i++) {

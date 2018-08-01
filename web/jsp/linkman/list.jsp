@@ -25,6 +25,7 @@
             //2 提交表单
             $("#customerForm").submit();
         };
+
     </SCRIPT>
 
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
@@ -71,10 +72,19 @@
                                 <TR>
                                     <TD>联系人名称：</TD>
                                     <TD><INPUT class=textbox id=sChannel2
-                                               style="WIDTH: 80px" maxLength=50 name="lkm_name"></TD>
-
-                                    <TD><INPUT class=button id=sButton2 type=submit
-                                               value=" 筛选 " name=sButton2></TD>
+                                               style="WIDTH: 80px" maxLength=50 name="lkm_name"
+                                               value="${param.lkm_name}"></TD>
+                                    <TD>客户名称：</TD>
+                                    <input type="hidden" name="customer.cust_id" id="cust_id"
+                                           value="${param['customer.cust_id']}"/>
+                                    <TD><INPUT class=textbox id=cust_name
+                                               style="WIDTH: 80px" maxLength=50 name="customer.cust_name"
+                                               value="${param['customer.cust_name']}"/></TD>
+                                    <TD><INPUT class=button id=sButton2 type="button"
+                                               onclick="window.open('${pageContext.request.contextPath}/customerAction_list?selectWindow=select','','width=500, height=500')"
+                                               value=" 选择客户 " name=sButton2></TD>
+                                    <TD><INPUT class=button id=sButton3 type=submit
+                                               value=" 筛选 " name=sButton3></TD>
                                 </TR>
                                 </TBODY>
                             </TABLE>

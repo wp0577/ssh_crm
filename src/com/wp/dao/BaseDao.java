@@ -1,6 +1,7 @@
 package com.wp.dao;
 
 import com.wp.domain.Customer;
+import com.wp.domain.User;
 import com.wp.util.PageBean;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
@@ -66,4 +67,7 @@ public class BaseDao<T> extends HibernateDaoSupport {
         return (List<T>) getHibernateTemplate().findByCriteria(dc, pageBean.getStart(), pageBean.getPageSize());
     }
 
+    public List<T> getUserByCode(DetachedCriteria dc) {
+        return (List<T>) getHibernateTemplate().findByCriteria(dc);
+    }
 }

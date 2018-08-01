@@ -66,7 +66,7 @@
                                             <TD style="HEIGHT: 28px" width=80>登 录 名：</TD>
                                             <TD style="HEIGHT: 28px" width=150><INPUT id=txtName
                                                                                       style="WIDTH: 130px"
-                                                                                      name="user_name"></TD>
+                                                                                      name="user_code"></TD>
                                             <TD style="HEIGHT: 28px" width=370><SPAN
                                                     id=RequiredFieldValidator3
                                                     style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入登录名</SPAN>
@@ -88,14 +88,17 @@
                                         </TR>
                                         <TR>
                                             <TD style="HEIGHT: 18px" colspan="2"><font color="red"><s:property
-                                                    value="exception.message"/> </font></TD>
+                                                    value="#error"/> </font></TD>
                                             <TD style="HEIGHT: 18px"></TD>
                                         </TR>
                                         <TR>
-                                            <TD></TD>
-                                            <TD><INPUT id=btn
-                                                       style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px"
-                                                       type=image src="images/login_button.gif" name=btn>
+                                            <TD colspan="2"><INPUT id=btn
+                                                                   style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px"
+                                                                   type=image src="images/login_button.gif" name=btn>
+
+                                                <img style="cursor: pointer ;BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px"
+                                                     src="images/regist_button.png" name=btn1
+                                                     onclick="window.location.href = '${pageContext.request.contextPath}/register.jsp'">
                                             </TD>
                                         </TR>
                                         </TBODY>

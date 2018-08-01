@@ -17,38 +17,34 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     //而且模型驱动似乎跟DetachedCriteria dc =
     // DetachedCriteria.forClass(User.class);有冲突。
 
-    private User user;
-    private String user_name;
-    private String user_password;
+    private User user = new User();
 
     public String login() {
         //System.out.println("模型驱动" + user.getUser_name());
         DetachedCriteria dc = DetachedCriteria.forClass(User.class);
-        dc.add(Restrictions.eq("user_name", user_name));
-        dc.add(Restrictions.eq("user_password", user_password));
-        List<User> list = userService.getByName(dc);
-        if (list.size() > 0) {
+        dc.add(Restrictions.eq("user_code", user.getUser_code()));
+        dc.add(Restrictions.eq("user_password", user.getUser_password()));
+        try {
+            List<User> list = userService.getByName(dc);
             ActionContext.getContext().getSession().put("user1", list.get(0));
             return SUCCESS;
+        } catch (Exception e) {
+            ActionContext.getContext().put("error", e.getMessage());
+            return "error";
         }
-        return ERROR;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String regist() throws Exception {
+        try {
+            userService.regist(user);
+        } catch (Exception e) {
+            ActionContext.getContext().put("error", e.getMessage());
+            System.out.println(e.getMessage());
+            return "errorRegist";
+        }
+        return "toLogin";
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public String getUser_password() {
-        return user_password;
-    }
-
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
-    }
 
     @Override
     public User getModel() {
