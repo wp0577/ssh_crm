@@ -31,6 +31,16 @@ public class SaleVisitAction extends ActionSupport implements ModelDriven<SaleVi
         return SUCCESS;
     }
 
+    public String toList() {
+        //获取到需要修改的visit_id
+        String id = saleVisit.getVisit_id();
+        //通过id得到对应的saleVisit对象
+        SaleVisit saleVisit = saleVisitService.getSaleVisitById(id);
+        ActionContext.getContext().put("saleVisit", saleVisit);
+        return "toAdd";
+    }
+
+
     public String list() {
         //通过Detach离线对象去查询，可以实现多态
         DetachedCriteria dc = DetachedCriteria.forClass(SaleVisit.class);

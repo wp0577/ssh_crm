@@ -29,4 +29,7 @@ public class SaleVisitService {
         return pageBean;
     }
 
+    public SaleVisit getSaleVisitById(String id) {
+        return saleVisitDao.getById(id);
+    }
 }
