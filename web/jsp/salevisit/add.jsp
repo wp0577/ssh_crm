@@ -35,7 +35,7 @@
       action="${pageContext.request.contextPath }/saleVisitAction_add"
       method="post">
     <!-- 隐藏域回显当前编辑的拜访记录id -->
-
+    <input type="hidden" name="visit_id" value="<s:property value="#saleVisit.visit_id" />">
     <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
         <TBODY>
         <TR>
