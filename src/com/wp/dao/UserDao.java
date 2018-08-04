@@ -2,8 +2,12 @@ package com.wp.dao;
 
 import com.wp.domain.User;
 import com.wp.util.PageBean;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.HibernateCallback;
 
 import java.io.Serializable;
 import java.util.List;
@@ -26,4 +30,6 @@ public class UserDao extends BaseDao<User> {
         dc.add(Restrictions.like("user_name", "%" + name + "%"));
         return (List<User>) getHibernateTemplate().findByCriteria(dc);
     }
+
+
 }

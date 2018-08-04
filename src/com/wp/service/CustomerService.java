@@ -14,7 +14,16 @@ public class CustomerService {
         this.customerDao = customerDao;
     }
 
+    public List getIndustryCount() {
+        return customerDao.getIndustryCount();
+    }
+
+    public List getSourceCount() {
+        return customerDao.getSourceCount();
+    }
+
     //查询总数据和Customer对象，并封装成pageBean
+
     public PageBean getPageBean(DetachedCriteria dc, Integer currentPage, Integer pageSize) {
         //通过离线查询对象查询
         Integer totalCount = customerDao.getCount(dc);
@@ -28,6 +37,7 @@ public class CustomerService {
         }*/
         return pageBean;
     }
+
 
     public void save(Customer customer) {
         customerDao.saveOrUpdate(customer);

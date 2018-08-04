@@ -30,8 +30,8 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="7116c931-75f3-46ad-9bcf-5de9fed55bc5" />
-          <unit-entry name="noname-ApplicationContext.xml@1286" value="7116c931-75f3-46ad-9bcf-5de9fed55bc5" />
+          <unit-entry name="hibernate.cfg.xml" value="386c9075-456b-48bc-a7d8-9fea69d70bed" />
+          <unit-entry name="noname-ApplicationContext.xml@1286" value="386c9075-456b-48bc-a7d8-9fea69d70bed" />
           <unit-entry name="noname-ApplicationContext.xml@862" />
         </datasource-map>
         <naming-strategy-map />
@@ -49,7 +49,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 7.0.73" level="application_server_libraries" />
     <orderEntry type="library" exported="" name="lib" level="project" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="JUnit4">
         <CLASSES>
           <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/" />
@@ -59,6 +59,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="jstl-1.2" level="project" />
+    <orderEntry type="library" exported="" name="jstl-1.2" level="project" />
   </component>
 </module>

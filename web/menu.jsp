@@ -215,7 +215,8 @@
                                    cellPadding=2 width=155 align=center border=0>
                                 <TBODY>
                                 <TR>
-                                    <TD class=menuSmall><A class=style2 href="#"
+                                    <TD class=menuSmall><A class=style2
+                                                           href="${pageContext.request.contextPath}/customerAction_getIndustryCount"
                                                            target=main>－ 客户信息查询</A></TD>
                                 </TR>
                                 <TR>
@@ -244,11 +245,13 @@
                                    cellPadding=2 width=155 align=center border=0>
                                 <TBODY>
                                 <TR>
-                                    <TD class=menuSmall><A class=style2 href="#"
+                                    <TD class=menuSmall><A class=style2
+                                                           href="${pageContext.request.contextPath}/customerAction_getIndustryCount"
                                                            target=main>－客户行业统计</A></TD>
                                 </TR>
                                 <TR>
-                                    <TD class=menuSmall><A class=style2 href="#"
+                                    <TD class=menuSmall><A class=style2
+                                                           href="${pageContext.request.contextPath}/customerAction_getSourceCount"
                                                            target=main>－客户来源统计</A></TD>
                                 </TR>
 

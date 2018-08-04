@@ -4,6 +4,7 @@ import com.wp.domain.Customer;
 import com.wp.util.PageBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate5.HibernateCallback;
@@ -26,6 +27,42 @@ public class CustomerDao extends BaseDao<Customer> {
             }
         });
     }
+
+    public List getIndustryCount() {
+
+        List<Object[]> list = getHibernateTemplate().execute(new HibernateCallback<List<Object[]>>() {
+            String sql = "SELECT bd.dict_item_name, count(*) FROM " +
+                    "cst_customer cc, base_dict bd " +
+                    "where cc.cust_industry=bd.dict_id " +
+                    "GROUP BY bd.dict_item_name";
+
+            @Override
+            public List<Object[]> doInHibernate(Session session) throws HibernateException {
+                Query query = session.createSQLQuery(sql);
+                return query.list();
+            }
+        });
+        //System.out.println(list);
+        return list;
+    }
+
+    public List getSourceCount() {
+        List<Object[]> list = getHibernateTemplate().execute(new HibernateCallback<List<Object[]>>() {
+            String sql = "SELECT bd.dict_item_name, count(*) FROM " +
+                    "cst_customer cc, base_dict bd " +
+                    "where cc.cust_source=bd.dict_id " +
+                    "GROUP BY bd.dict_item_name";
+
+            @Override
+            public List<Object[]> doInHibernate(Session session) throws HibernateException {
+                Query query = session.createSQLQuery(sql);
+                return query.list();
+            }
+        });
+        //System.out.println(list);
+        return list;
+    }
+
 
     @Override
     public void save(Customer customer) {

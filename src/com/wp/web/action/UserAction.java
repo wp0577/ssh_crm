@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.wp.domain.User;
 import com.wp.service.UserService;
+import com.wp.util.MD5Utils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -19,12 +20,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
     private User user = new User();
 
+
     public String login() {
         //System.out.println("模型驱动" + user.getUser_name());
         DetachedCriteria dc = DetachedCriteria.forClass(User.class);
         dc.add(Restrictions.eq("user_code", user.getUser_code()));
-        dc.add(Restrictions.eq("user_password", user.getUser_password()));
-        System.out.println("usercode" + user.getUser_code());
+        dc.add(Restrictions.eq("user_password", MD5Utils.md5(user.getUser_password())));
+        System.out.println("usercode： " + user.getUser_code());
         try {
             List<User> list = userService.getByName(dc);
             ActionContext.getContext().getSession().put("user1", list.get(0));

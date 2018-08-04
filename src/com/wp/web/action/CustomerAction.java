@@ -12,6 +12,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
 import java.io.File;
+import java.util.List;
 
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
 
@@ -23,6 +24,20 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     private Integer pageSize;
 
     private File photo;
+
+    public String getIndustryCount() {
+        //传回来的是List<Obeject[]>对象，列表中有两个数组对象。
+        List list = customerService.getIndustryCount();
+        ActionContext.getContext().put("list", list);
+        return "toMultiple";
+    }
+
+    public String getSourceCount() {
+        //传回来的是List<Obeject[]>对象，列表中有两个数组对象。
+        List list = customerService.getSourceCount();
+        ActionContext.getContext().put("list", list);
+        return "toMultiple1";
+    }
 
     public String list() throws Exception {
 

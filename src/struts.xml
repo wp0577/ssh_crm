@@ -36,6 +36,8 @@
             <result name="success">/jsp/customer/list.jsp</result>
             <result name="toList" type="redirectAction">customerAction_list</result>
             <result name="toAdd">/jsp/customer/add.jsp</result>
+            <result name="toMultiple">/jsp/multiple/list.jsp</result>
+            <result name="toMultiple1">/jsp/multiple/listSource.jsp</result>
         </action>
         <action name="linkManAction_*" class="com.wp.web.action.LinkManAction" method="{1}">
             <result name="success">/jsp/linkman/list.jsp</result>

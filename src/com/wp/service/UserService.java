@@ -2,6 +2,7 @@ package com.wp.service;
 
 import com.wp.dao.UserDao;
 import com.wp.domain.User;
+import com.wp.util.MD5Utils;
 import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
@@ -23,15 +24,18 @@ public class UserService {
     }
 
     public void regist(User user) {
-        System.out.println(user.getUser_code());
         //first check the userCode whether exist
         List<User> list = userDao.getUserByCode(user.getUser_code());
         if (list.size() > 0) throw new RuntimeException("username has existed !!!");
         user.setUser_state('1');
+        //使用md5加密
+        user.setUser_password(MD5Utils.md5(user.getUser_password()));
         userDao.save(user);
     }
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
+
+
 }

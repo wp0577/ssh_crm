@@ -4,9 +4,7 @@
       <root url="file://$PROJECT_DIR$/web/WEB-INF/lib" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.ideaLibSources/xwork-core-2.3.24-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
     <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib" recursive="false" />
   </library>
 </component>
